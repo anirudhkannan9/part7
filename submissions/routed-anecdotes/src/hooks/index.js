@@ -5,12 +5,18 @@ export const useField = type => {
 
     const onChange = event => setValue(event.target.value)
 
-    const clear = () => setValue('')
+    const reset = () => {
+        setValue('')
+    }
 
     return {
-        type,
-        value,
-        onChange,
-        clear
+        native: {
+            type,
+            value,
+            onChange
+        },
+        custom: {
+            reset
+        }
     }
 }
