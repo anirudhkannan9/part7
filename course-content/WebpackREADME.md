@@ -11,7 +11,7 @@ We write our code in modules to make it easy to read, write, and maintain. (Old)
 Bundling serves several purposes:
 - Allow the browser to read and execute our code
 - Improve performance by cutting down on overhead that might arise from needing to import/use several files concurrently
-- Give the browser a 'starting point' (typically *index.js*) from which to execute our code
+- Give the browser a 'starting point' (typically *index.js*) from which to execute our code. _index.js_'s imports are imported (recursively)
 
 Bundling is done with webpack (a module bundler). 
 
