@@ -2,7 +2,11 @@
 
 Summary of content from: https://fullstackopen.com/en/part7/webpack
 
+Create-react-app is as a 'black box' that makes React apps work. Let's look at a key tool in aiding this process: webpack.
+
 ## Bundling
+
+
 
 ## Configuration file
 
