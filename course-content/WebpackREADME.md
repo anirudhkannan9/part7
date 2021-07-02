@@ -13,6 +13,15 @@ Bundling serves several purposes:
 - Improve performance by cutting down on overhead that might arise from needing to import/use several files concurrently
 - Give the browser a 'starting point' (typically *index.js*) from which to execute our code
 
+Bundling is done with webpack (a module bundler). 
+
+The result of bundling (e.g. via `npm run build`) is to create a directory with the following contents: 
+<img width="970" alt="Screenshot 2021-07-02 at 3 32 34 PM" src="https://user-images.githubusercontent.com/47587789/124334034-ba06c200-db4a-11eb-8188-4715d08f816e.png">
+
+_index.html_ loads and uses (as scripts) 2 bundled JS files (_static/js/1.578f4ea1.chunk.js_ and _static/js/main.8209a8f2.chunk.js_), and a CSS file (_static/css/main.f9a47af2.chunk.css_) that contains all of the application's CSS. 
+
+
+
 
 
 ## Configuration file
