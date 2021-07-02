@@ -1,87 +1,19 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
+import Home from './components/Home'
+import Note from './components/Note'
+import Notes from './components/Notes'
+import Users from './components/Users'
+import Login from './components/Login'
 import {
   BrowserRouter as Router, 
   Switch, 
   Route, 
   Link,
   Redirect,
-  useParams,
-  useHistory,
   useRouteMatch
 } from 'react-router-dom'
-
-const Home = () => (
-  <div> 
-    <h2>TKTL notes app</h2> 
-    <p>Homepage of the notes app</p>
-  </div>
-)
-
-const Note = ( { note }) => {
-  return (
-    <div> 
-      <h2>{note.content}</h2>
-      <div>{note.user}</div>
-      <div><strong>{note.important ? 'important' : ''}</strong></div> 
-    </div>
-
-  )
-}
-
-const Notes = ({ notes }) => (
-  <div>
-    <h2>Notes</h2>
-    <ul>
-      {notes.map(note => 
-        <li key={note.id}>
-          <Link to={`/notes/${note.id}`}>{note.content}</Link>
-
-        </li>)}
-    </ul>
-  </div>
-
-)
-
-const Users = () => (
-  <div> 
-    <h2>Notes app Users</h2>
-    <ul>
-      <li>Anirudh Kannan</li>
-      <li>Matti Luukainen</li>
-      <li>Juha Tauriainen</li>
-      <li>Arto Hellas</li>
-    </ul>
-  </div>
-)
-
-const Login = (props) => {
-  const history = useHistory()
-
-  const onSubmit = event => {
-    event.preventDefault()
-    props.onLogin('kannana1')
-    //next line causes browser's url to change to '/'; app renders corresponding component <Home />
-    history.push('/')
-  }
-
-  return (
-    <div>
-      <h2>Login</h2>
-      <form onSubmit={onSubmit}>
-        <div>
-          username: <input/>
-        </div>
-        <div>
-          password: <input type='password'/>
-        </div>
-        <button type="submit">login</button>
-      </form>
-    </div>
-  )
-}
-
-
+import { Alert, Nav, Navbar } from 'react-bootstrap'
 
 
 const App = () => {
@@ -107,8 +39,15 @@ const App = () => {
   ]) 
 
   const [ user, setUser ] = useState(null)
+  const [ message, setMessage ] = useState(null)
 
-  const login = user => setUser(user)
+  const login = user => {
+    setUser(user)
+    setMessage(`Welcome ${user}`)
+    setTimeout(() => {
+      setMessage(null)
+    }, 10000)
+  }
 
   const padding = {
     padding: 5
@@ -124,17 +63,37 @@ const App = () => {
     : null
 
   return (
-    <div>
-        <div>
-          <Link style={padding} to="/">home</Link>
-          <Link style={padding} to="/notes">notes</Link>
-          <Link style={padding} to="/users">users</Link>
-          {user
-            ? <em>{user} logged in</em>
-            : <Link style={padding} to="/login">login</Link>
+    <div className='container'>
+      {message && 
+        <Alert variant="success">
+          {message}
+        </Alert>
 
-          }
-        </div>
+      }
+
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="mr-auto">
+              <Nav.Link href="#" as="span">
+                <Link style={padding} to="/">home</Link>
+              </Nav.Link>
+              <Nav.Link href="#" as="span">
+                <Link style={padding} to="/notes">notes</Link>
+              </Nav.Link>
+              <Nav.Link href="#" as="span">
+                <Link style={padding} to="/users">users</Link>
+              </Nav.Link>
+              <Nav.Link href="#" as="span">
+                {user
+                  ? <em>{user} logged in</em>
+                  : <Link to="/login">login</Link>
+                }
+            </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+
 
         <Switch>
           <Route path="/notes/:id">
