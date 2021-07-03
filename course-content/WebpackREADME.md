@@ -20,6 +20,8 @@ The result of bundling (e.g. via `npm run build`) is to create a directory with 
 
 _index.html_ - the 'main file' of the directory - loads and uses (as scripts) 2 bundled JS files (_static/js/1.578f4ea1.chunk.js_ and _static/js/main.8209a8f2.chunk.js_), and a CSS file (_static/css/main.f9a47af2.chunk.css_) that contains all of the application's CSS. 
 
+Running `npm run build` creates a JS file (bundling our application's code) at a location we've specified. In our case, the command produces a _main.js_ file under the _build_ directory, as specified in our _webpack.config.js_ file in our project's root. 
+
 
 
 
