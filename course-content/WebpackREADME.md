@@ -64,12 +64,18 @@ Upon bundling, we observe that the App component is bundled as such:
 
 We can see that the loader has transformed the JSX defining the App component into JS. Our application now uses the JS _createElement_ method to define the component that was previously defined in JSX. 
 
-
-
-
-
-
 ## Transpilers
+
+We used babel to transpile our code from JSX to JS. Transpilation is the process of compiling code by transforming it from one language to another. We used presets (a set of plugins) to do so, as is typical. 
+
+Most browsers can only handle up till JS' ES5 standard. So let's take a set of presets into use that will transpile our 'modern' code into code compatible with the JS ES5 standard. We run `npm install @babel/preset-env --save-dev` to install the @babel/preset-env plugin that will help with this. We then take it into use: 
+
+<img width="478" alt="Screenshot 2021-07-04 at 2 16 56 PM" src="https://user-images.githubusercontent.com/47587789/124399765-7e96ff80-dcd2-11eb-86cd-cee4546eb661.png">
+
+Our app component is now defined with older syntax (`var` instead of `const`, `function` instead of the arrow function syntax) that is compatible with the ES5 standard: 
+
+<img width="845" alt="Screenshot 2021-07-04 at 2 18 29 PM" src="https://user-images.githubusercontent.com/47587789/124399788-b605ac00-dcd2-11eb-9297-21f5a7809eda.png">
+
 
 ## CSS
 
