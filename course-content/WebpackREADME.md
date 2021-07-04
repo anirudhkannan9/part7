@@ -79,6 +79,27 @@ Our app component is now defined with older syntax (`var` instead of `const`, `f
 
 ## CSS
 
+We define some style rules in a new _src/index.css_ file: 
+
+<img width="288" alt="Screenshot 2021-07-04 at 2 20 26 PM" src="https://user-images.githubusercontent.com/47587789/124399825-fb29de00-dcd2-11eb-9379-40703ab11e0b.png">
+
+And bring the file into use in our _src/App.js_ file:
+
+<img width="269" alt="Screenshot 2021-07-04 at 2 20 49 PM" src="https://user-images.githubusercontent.com/47587789/124399832-0977fa00-dcd3-11eb-959f-f3ecef7e860c.png">
+
+This causes the transpilation process to break again:
+
+<img width="1227" alt="Screenshot 2021-07-04 at 2 21 38 PM" src="https://user-images.githubusercontent.com/47587789/124399851-27ddf580-dcd3-11eb-8858-d302e79eb28a.png">
+
+
+We know how to fix this -- we define new loaders to be used when handling such files. We first install the required loaders with `npm install style-loader css-loader --save-dev`. We then take the loaders into use in our _src/webpack.config.js_ file, as such: 
+
+<img width="463" alt="Screenshot 2021-07-04 at 2 24 19 PM" src="https://user-images.githubusercontent.com/47587789/124399903-860ad880-dcd3-11eb-8c23-7ef8c31ead4d.png">
+
+The css-loader loads _CSS_ files and the style-loader 'injects' a _style_ element that contains all of the application's styles. 
+
+
+
 ## Webpack-dev-server
 
 ## Source maps
