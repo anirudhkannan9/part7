@@ -37,7 +37,7 @@ We can expect _index.js_ and _App.js_ to be bundled accordingly: <img width="405
 If we comment out lines 1 and 5, we would expect only _index.js_ to be bundled; App.js wouldn't be included in the bundled _main.js_ file that `npm run build` creates: <img width="347" alt="Screenshot 2021-07-02 at 8 43 36 PM" src="https://user-images.githubusercontent.com/47587789/124342096-2ea32600-db76-11eb-901a-57207ce3e008.png">
 <img width="398" alt="Screenshot 2021-07-02 at 8 43 48 PM" src="https://user-images.githubusercontent.com/47587789/124342098-34990700-db76-11eb-9cee-f1bd83242915.png">
 
-The _output_ property specifies where the resulting bundled file will be created. The target directory must be an _absolute path_, which we use _path.resolve_ to create. *__dirname* is a global variable storing the path to the current directory.
+The _output_ property specifies where the resulting bundled file will be created. The target directory must be an absolute path, which we use _path.resolve_ to create. *__dirname* is a global variable storing the path to the current directory.
 
 
 
