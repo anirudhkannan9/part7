@@ -40,10 +40,34 @@ If we comment out lines 1 and 5, we would expect only _index.js_ to be bundled; 
 The _output_ property specifies where the resulting bundled file will be created. The target directory must be an absolute path, which we use _path.resolve_ to create. *__dirname* is a global variable storing the path to the current directory.
 
 
-
 ## Bundling React
 
+We import React and add the required definitions in order to make the app a React app. Upon bundling it, we're met with the following error: 
+
+![21](https://user-images.githubusercontent.com/47587789/124398961-5789ff00-dccd-11eb-9285-3df9d1061989.png)
+
 ## Loaders
+
+This error arises because we define React components (such as the App component) using JSX, not JS:
+
+<img width="217" alt="Screenshot 2021-07-04 at 1 41 49 PM" src="https://user-images.githubusercontent.com/47587789/124398997-96b85000-dccd-11eb-8e2c-60208d2aee50.png">
+
+Webpack can only deal with JS, so we need to add loaders to instruct Webpack to process the files containing JSX (transform JSX into JS) before they can be bundled:
+
+<img width="405" alt="Screenshot 2021-07-04 at 1 42 53 PM" src="https://user-images.githubusercontent.com/47587789/124399024-bc455980-dccd-11eb-8b3f-5b2ff08d63f1.png">
+
+The above loader configuration specifies that the babel-loader will process all files ending in _.js_. The _options_ property can be used to specify behaviour; in this case we use the set of plugins used to support React/JSX. 
+
+Upon bundling, we observe that the App component is bundled as such:
+
+<img width="732" alt="Screenshot 2021-07-04 at 1 45 28 PM" src="https://user-images.githubusercontent.com/47587789/124399083-19410f80-dcce-11eb-8b1d-a83b8f79a885.png">
+
+We can see that the loader has transformed the JSX defining the App component into JS. Our application now uses the JS _createElement_ method to define the component that was previously defined in JSX. 
+
+
+
+
+
 
 ## Transpilers
 
