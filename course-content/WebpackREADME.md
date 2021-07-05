@@ -122,7 +122,21 @@ Some of which is derived from our definition of the App component:
 
 <img width="379" alt="Screenshot 2021-07-04 at 7 13 05 PM" src="https://user-images.githubusercontent.com/47587789/124408796-dd24a380-dcfb-11eb-927f-fbfaece8e3c6.png">
 
+But error messages are still inscrutable when tracked - they point to code that only barely resembles what we wrote: 
 
+<img width="578" alt="Screenshot 2021-07-04 at 8 19 00 PM" src="https://user-images.githubusercontent.com/47587789/124413245-13b2ec00-dd05-11eb-96cf-363d0db07a96.png">
+
+<img width="578" alt="Screenshot 2021-07-04 at 8 19 12 PM" src="https://user-images.githubusercontent.com/47587789/124413265-19a8cd00-dd05-11eb-8e85-fd7b1fbad3a0.png">
+
+The error points to the bundled version of our code. If we want to point it to the source code, we need to ask webpack to generate a source map that maps the bundled code onto ours, such that e.g. error messages point to the code that we wrote: 
+
+<img width="417" alt="Screenshot 2021-07-04 at 8 21 13 PM" src="https://user-images.githubusercontent.com/47587789/124413400-61c7ef80-dd05-11eb-9319-4e06836de6f3.png">
+
+Now the error message points to code that we can recognize: 
+
+<img width="428" alt="Screenshot 2021-07-04 at 8 21 30 PM" src="https://user-images.githubusercontent.com/47587789/124413415-6c828480-dd05-11eb-9d08-b9973a7ff946.png">
+
+Allowing us to more easily fix the error.
 
 ## Minifying the code
 
