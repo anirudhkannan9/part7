@@ -112,6 +112,18 @@ We then add a devServer configuration to our config file. The `npm start` comman
 
 ## Source maps
 
+We now have a barely functioning React app: 
+
+
+
+https://user-images.githubusercontent.com/47587789/124408775-d007b480-dcfb-11eb-9bae-414f75442f2d.mov
+
+Some of which is derived from our definition of the App component: 
+
+<img width="379" alt="Screenshot 2021-07-04 at 7 13 05 PM" src="https://user-images.githubusercontent.com/47587789/124408796-dd24a380-dcfb-11eb-927f-fbfaece8e3c6.png">
+
+
+
 ## Minifying the code
 
 ## Development and production configuration 
