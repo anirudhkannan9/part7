@@ -98,9 +98,16 @@ We know how to fix this -- we define new loaders to be used when handling such f
 
 The css-loader loads _CSS_ files and the style-loader 'injects' a _style_ element that contains all of the application's styles. 
 
-
-
 ## Webpack-dev-server
+
+So far we've ignored a problem that's screaming out to be solved -- our development workflow is incredibly clunky. Every time we make a change, we have to re-bundle the code and refresh the browser. 
+
+We can solve this by adding a devServer configuration to our _webpack.config.js_ file; this configured a serve upon which our application runs that restarts every time we make a change. We first run `npm install --save-dev webpack-dev-server`. 
+
+We add a script to our _package.json_ file that starts the dev-server.
+
+<img width="333" alt="Screenshot 2021-07-04 at 5 34 51 PM" src="https://user-images.githubusercontent.com/47587789/124404069-25d56000-dcee-11eb-813f-5bf36e6a1f1e.png">
+
 
 ## Source maps
 
