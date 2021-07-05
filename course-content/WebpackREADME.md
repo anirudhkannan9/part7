@@ -153,8 +153,9 @@ Note: the app broke AGAIN after making these changes. By 'broke' I mean the app 
 
 This means the app works if I open the _index.html_ file in Chrome, but the React app still doesn't work (merely renders). 
 
-
 ## Development and production configuration 
+
+
 
 ## Polyfill
 
