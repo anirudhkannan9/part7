@@ -108,6 +108,7 @@ We add a script to our _package.json_ file that starts the dev-server.
 
 <img width="333" alt="Screenshot 2021-07-04 at 5 34 51 PM" src="https://user-images.githubusercontent.com/47587789/124404069-25d56000-dcee-11eb-813f-5bf36e6a1f1e.png">
 
+We then add a devServer configuration to our config file. The `npm start` command now starts the dev-server at port 3000 (our application is available at http://localhost:3000). 
 
 ## Source maps
 
