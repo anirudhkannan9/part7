@@ -147,6 +147,12 @@ At which point it will minify the code into a much smaller file (albeit a comple
 
 <img width="1192" alt="Screenshot 2021-07-04 at 8 33 32 PM" src="https://user-images.githubusercontent.com/47587789/124414212-1a426300-dd07-11eb-8d83-f7eca6530832.png">
 
+Note: the app broke AGAIN after making these changes. By 'broke' I mean the app and its components render, and I can click the button, but the counter doesn't increment. I was able to half-fix this by rewriting the index.html file so that it reads: 
+
+<img width="492" alt="Screenshot 2021-07-04 at 8 43 43 PM" src="https://user-images.githubusercontent.com/47587789/124414925-870a2d00-dd08-11eb-855e-040e0062972c.png">
+
+This means the app works if I open the index.html in Chrome, but the React app still doesn't work (merely renders). 
+
 
 ## Development and production configuration 
 
