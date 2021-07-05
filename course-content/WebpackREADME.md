@@ -114,8 +114,6 @@ We then add a devServer configuration to our config file. The `npm start` comman
 
 We now have a barely functioning React app: 
 
-
-
 https://user-images.githubusercontent.com/47587789/124408775-d007b480-dcfb-11eb-9bae-414f75442f2d.mov
 
 Some of which is derived from our definition of the App component: 
@@ -139,6 +137,16 @@ Now the error message points to code that we can recognize:
 Allowing us to more easily fix the error.
 
 ## Minifying the code
+
+Our current _main.js_ file isn't large in absolute terms, but having any bloat at all can hinder performance, especially for mobile users. Upon inspecting the file, we observe that much of it is superfluous e.g. comments. Instead of dealing with this manually, we can instruct webpack to bundle the code in production mode:
+
+<img width="347" alt="Screenshot 2021-07-04 at 8 32 53 PM" src="https://user-images.githubusercontent.com/47587789/124414175-039c0c00-dd07-11eb-8d31-eff6e3ad6133.png">
+
+
+At which point it will minify the code into a much smaller file (albeit a completely unreadable one) upon running `npm run build`:
+
+<img width="1192" alt="Screenshot 2021-07-04 at 8 33 32 PM" src="https://user-images.githubusercontent.com/47587789/124414212-1a426300-dd07-11eb-8d83-f7eca6530832.png">
+
 
 ## Development and production configuration 
 
