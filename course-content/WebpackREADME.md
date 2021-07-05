@@ -151,7 +151,7 @@ Note: the app broke AGAIN after making these changes. By 'broke' I mean the app 
 
 <img width="492" alt="Screenshot 2021-07-04 at 8 43 43 PM" src="https://user-images.githubusercontent.com/47587789/124414925-870a2d00-dd08-11eb-855e-040e0062972c.png">
 
-This means the app works if I open the index.html in Chrome, but the React app still doesn't work (merely renders). 
+This means the app works if I open the _index.html_ file in Chrome, but the React app still doesn't work (merely renders). 
 
 
 ## Development and production configuration 
