@@ -1,4 +1,15 @@
-# Getting Started with Create React App
+# Part 7e notes
+
+## Virtual DOM
+
+React developers rarely (never) directly manipulate the browser's DOM, or Document-Object Model. Instead, the browser provides a DOM API, using which JS can modify the elements rendered to the page and their functionality. 
+
+The React elements defining the appearance of the program are stored in a Virtual DOM, which is stored in system memory. Come runtime, the Virtual DOM uses the ReactDOM library to render the Virtual DOM to the real DOM using the DOM API.
+
+When the state of the application changes, React -- which has the previous Virtual DOM -- compares the new Virtual DOM to the old one and determines the most efficient way to modify the Virtual DOM to reflect the changes (additions, deletions, modifications rather than creating a new Virtual DOM from scratch). 
+
+
+# Boilerplate -- Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
