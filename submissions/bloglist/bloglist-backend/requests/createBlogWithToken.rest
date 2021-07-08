@@ -1,0 +1,10 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imthbm5hbmExIiwiaWQiOiI2MGU1MWYwZjRkNTVjNjcwODJiYmI0YWMiLCJpYXQiOjE2MjU2MzczMDZ9.KZ71NAKuU-mYiWWYBmjDa9ohbElYeilzvfRFgRqHhM8
+
+{
+    "title": "testing out posting blogs for part7f",
+    "url": "xyz.com",
+    "author": "anyone"
+}
+

@@ -1,0 +1,14 @@
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+    "username": "kannana1",
+    "password": "secret"
+}
+
+
+# {
+#   "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imthbm5hbmExIiwiaWQiOiI2MGU1MWYwZjRkNTVjNjcwODJiYmI0YWMiLCJpYXQiOjE2MjU2MzczMDZ9.KZ71NAKuU-mYiWWYBmjDa9ohbElYeilzvfRFgRqHhM8",
+#   "username": "kannana1",
+#   "name": "Anirudh Kannan"
+# }
