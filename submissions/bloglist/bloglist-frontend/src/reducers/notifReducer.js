@@ -1,5 +1,14 @@
 const initialNotif = ''
 
+const notifReducer = (state = initialNotif, action ) => {
+    switch ( action.type ) {
+        case 'NEW_NOTIF':
+            return action.data
+        default: return state
+    }
+}
+
+//action creators
 export const createNotif = (message, seconds, type ) => {
     return async dispatch => {
         dispatch( {
@@ -13,14 +22,6 @@ export const createNotif = (message, seconds, type ) => {
              } )
 
         }, seconds * 1000)
-    }
-}
-
-const notifReducer = (state = initialNotif, action ) => {
-    switch ( action.type ) {
-        case 'NEW_NOTIF':
-            return action.data
-        default: return state
     }
 }
 
