@@ -24,9 +24,28 @@ const update = (blog) => {
   return request.then(response => response.data)
 }
 
+const voteForBlogService = blog => {
+  const votedBlog = { ...blog, likes: blog.likes + 1 }
+  console.log('in voteForBlogService, votedBlog: ', votedBlog)
+  console.log('in voteForBlogService, blog ID: ', blog.id)
+  console.log('in voteForBlogService, getConfig(): ', getConfig())
+  const request = axios
+    .put(`${baseUrl}/${blog.id}`, votedBlog, getConfig())
+    .then(response => {
+      console.log(response.data)
+    })
+  return request.then(response => response.data)
+}
+
 const remove = (id) => {
   const request = axios.delete(`${baseUrl}/${id}`, getConfig())
   return request.then(response => response.data)
 }
 
-export default { getAll, create, update, remove }
+export default {
+  getAll,
+  create,
+  update,
+  voteForBlogService,
+  remove,
+}
