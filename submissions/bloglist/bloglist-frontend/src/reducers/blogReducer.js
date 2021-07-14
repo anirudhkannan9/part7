@@ -1,3 +1,4 @@
+//import blogService from '../services/blogs'
 
 const blogReducer = (state = [], action) => {
     switch ( action.type ) {
@@ -16,6 +17,8 @@ const blogReducer = (state = [], action) => {
 
             return state.slice().map(b => b.id !== id ? b : likedBlog)
         }
+        case 'REMOVE_BLOG':
+            return state.slice().filter(b => b.id !== action.data.id)
         default: return state
     }
 }
@@ -41,5 +44,14 @@ export const likeBlogActionCreator = blog => {
         data: blog
     }
 }
+
+export const removeBlogActionCreator = blog => {
+    return {
+        type: 'REMOVE_BLOG',
+        data: blog
+    }
+}
+
+
 
 export default blogReducer

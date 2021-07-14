@@ -12,7 +12,7 @@ import LoginForm from './components/LoginForm'
 import blogService from './services/blogs'
 import storage from './utils/storage'
 import { createNotif } from './reducers/notifReducer'
-import { createNewBlogActionCreator, likeBlogActionCreator } from './reducers/blogReducer'
+import { createNewBlogActionCreator, likeBlogActionCreator, removeBlogActionCreator } from './reducers/blogReducer'
 import { initializeBlogsActionCreator } from './reducers/blogReducer'
 
 
@@ -25,7 +25,6 @@ const App = () => {
     blogService.getAll().then(blogs => {
       dispatch( initializeBlogsActionCreator( blogs ) )
     })
-    console.log('in useEffect; if this is not the first time, it means dispatch has been updated')
   }, [dispatch])
 
   useEffect(() => {
@@ -58,8 +57,7 @@ const App = () => {
     const ok = window.confirm(`Remove blog ${blogToRemove.title} by ${blogToRemove.author}`)
     if (ok) {
       await blogService.remove(id)
-      //setBlogs(blogs.filter(b => b.id !== id))
-      blogs.filter (b => b.id !== id )
+      dispatch( removeBlogActionCreator( blogToRemove ) )
     }
   }
 
