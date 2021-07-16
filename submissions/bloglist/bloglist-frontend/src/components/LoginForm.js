@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import Notification from './Notification'
 import loginService from '../services/login'
 import { createNotif } from '../reducers/notifReducer'
-import storage from '../utils/storage'
 import { useDispatch } from 'react-redux'
+import { logInUserActionCreator } from '../reducers/userReducer'
 
 
-const LoginForm = ( { setUser } ) => {
+const LoginForm = () => {
     const [ username, setUsername ] = useState('')
     const [ password, setPassword ] = useState('')
     const dispatch = useDispatch()
@@ -20,9 +20,8 @@ const LoginForm = ( { setUser } ) => {
             })
             setUsername('')
             setPassword('')
-            setUser(user)
             dispatch( createNotif( `Welcome back, ${ user.name }`, 7, 'success' ) )
-            storage.saveUser(user)
+            dispatch( logInUserActionCreator( user ) )
         } catch ( exception ) {
             dispatch( createNotif( 'wrong username/password', 7, 'error' ) )
         }
