@@ -1,7 +1,8 @@
 const storageKey = 'loggedBlogAppUser'
 
-const saveUser = (user) =>
+const saveUser = (user) => {
   localStorage.setItem(storageKey, JSON.stringify(user))
+}
 
 const loadUser = () =>
   JSON.parse(localStorage.getItem(storageKey))

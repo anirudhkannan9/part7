@@ -52,6 +52,4 @@ export const removeBlogActionCreator = blog => {
     }
 }
 
-
-
 export default blogReducer

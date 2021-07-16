@@ -1,5 +1,5 @@
 import './App.css'
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 
@@ -10,27 +10,21 @@ import NewBlog from './components/NewBlog'
 import LoginForm from './components/LoginForm'
 
 import blogService from './services/blogs'
-import storage from './utils/storage'
 import { createNotif } from './reducers/notifReducer'
-import { createNewBlogActionCreator, likeBlogActionCreator, removeBlogActionCreator } from './reducers/blogReducer'
-import { initializeBlogsActionCreator } from './reducers/blogReducer'
+import { createNewBlogActionCreator, likeBlogActionCreator, removeBlogActionCreator, initializeBlogsActionCreator } from './reducers/blogReducer'
+import { logOutUserActionCreator } from './reducers/userReducer'
 
 
 const App = () => {
   const dispatch = useDispatch()
   const blogs = useSelector(state => state.blogs)
-  const [user, setUser] = useState(null)
+  const user = useSelector( state => state.user )
 
   useEffect(() => {
     blogService.getAll().then(blogs => {
       dispatch( initializeBlogsActionCreator( blogs ) )
     })
   }, [dispatch])
-
-  useEffect(() => {
-    const user = storage.loadUser()
-    setUser(user)
-  }, [])
 
   const blogFormRef = useRef()
 
@@ -61,14 +55,11 @@ const App = () => {
     }
   }
 
-  const handleLogout = () => {
-    setUser(null)
-    storage.logoutUser()
-  }
+  const handleLogout = () => dispatch( logOutUserActionCreator() )
 
   if ( !user ) {
     return (
-      <LoginForm setUser={setUser} />
+      <LoginForm />
     )
   }
 
