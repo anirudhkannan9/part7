@@ -1,5 +1,4 @@
 import React from 'react'
-//import userService from '../services/users'
 import './Users.css'
 import { Link } from 'react-router-dom'
 

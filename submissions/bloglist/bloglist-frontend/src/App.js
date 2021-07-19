@@ -10,6 +10,7 @@ import NewBlog from './components/NewBlog'
 import LoginForm from './components/LoginForm'
 import Users from './components/Users'
 import User from './components/User'
+import SingleBlog from './components/SingleBlog'
 
 import blogService from './services/blogs'
 import userService from './services/users'
@@ -92,6 +93,15 @@ const App = () => {
             {user.name} logged in <button onClick={handleLogout}>logout</button>
           </p>
         <Users users={users}/>
+      </Route>
+
+      <Route path="/blogs/:id">
+        <h2>blogs</h2>
+        <Notification/>
+        <p>
+          {user.name} logged in <button onClick={handleLogout}>logout</button>
+        </p>
+        <SingleBlog blogs={blogs} handleLike={handleLike}/>
       </Route>
 
       <Route path="/">
