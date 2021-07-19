@@ -9,6 +9,7 @@ import Togglable from './components/Togglable'
 import NewBlog from './components/NewBlog'
 import LoginForm from './components/LoginForm'
 import Users from './components/Users'
+import User from './components/User'
 
 import blogService from './services/blogs'
 import userService from './services/users'
@@ -74,6 +75,15 @@ const App = () => {
 
   return (
     <Switch>
+
+      <Route path="/users/:id">
+        <h2>blogs</h2>
+        <Notification />
+        <p>
+          {user.name} logged in <button onClick={handleLogout}>logout</button>
+        </p>
+        <User users={users}/>
+      </Route>
 
       <Route path="/users">
         <h2>blogs</h2>
