@@ -3,10 +3,7 @@ import { useParams } from 'react-router-dom'
 
 const User = ( { users } ) => {
     const id = useParams().id
-    //console.log(users)
-    //console.log(id)
     const user = users.find(u => u.id === id)
-    console.log(user.blogs)
 
     if (!user) {
         return null
