@@ -9,7 +9,7 @@ const getConfig = () => {
   }
 }
 
-const getAll = () => {
+const getAllBlogsService = () => {
   const request = axios.get(baseUrl)
   return request.then(response => response.data)
 }
@@ -43,7 +43,7 @@ const remove = (id) => {
 }
 
 export default {
-  getAll,
+  getAll: getAllBlogsService,
   create,
   update,
   voteForBlogService,
