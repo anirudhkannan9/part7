@@ -1,16 +1,16 @@
 import './App.css'
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Switch, Route } from 'react-router-dom'
+import { Link, Switch, Route } from 'react-router-dom'
 
 import Blog from './components/Blog'
-import Notification from './components/Notification'
 import Togglable from './components/Togglable'
 import NewBlog from './components/NewBlog'
 import LoginForm from './components/LoginForm'
 import Users from './components/Users'
 import User from './components/User'
 import SingleBlog from './components/SingleBlog'
+import Header from './components/Header'
 
 import blogService from './services/blogs'
 import userService from './services/users'
@@ -73,63 +73,54 @@ const App = () => {
   }
 
   const byLikes = (b1, b2) => b2.likes - b1.likes
+  const padding = { padding: 5 }
+  const navBarStyle = { backgroundColor: 'lightGrey' }
 
   return (
-    <Switch>
-
-      <Route path="/users/:id">
-        <h2>blogs</h2>
-        <Notification />
-        <p>
-          {user.name} logged in <button onClick={handleLogout}>logout</button>
-        </p>
-        <User users={users}/>
-      </Route>
-
-      <Route path="/users">
-        <h2>blogs</h2>
-          <Notification />
-          <p>
-            {user.name} logged in <button onClick={handleLogout}>logout</button>
-          </p>
-        <Users users={users}/>
-      </Route>
-
-      <Route path="/blogs/:id">
-        <h2>blogs</h2>
-        <Notification/>
-        <p>
-          {user.name} logged in <button onClick={handleLogout}>logout</button>
-        </p>
-        <SingleBlog blogs={blogs} handleLike={handleLike}/>
-      </Route>
-
-      <Route path="/">
-      <div>
-        <h2>blogs</h2>
-        <Notification />
-
-        <p>
-          {user.name} logged in <button onClick={handleLogout}>logout</button>
-        </p>
-
-        <Togglable buttonLabel='create new blog' ref={ blogFormRef }>
-          <NewBlog createBlog={ createBlog } />
-        </Togglable>
-
-        {blogs.sort(byLikes).map(blog =>
-          <Blog
-            key={blog.id}
-            blog={blog}
-            handleLike={handleLike}
-            handleRemove={handleRemove}
-            own={user.username===blog.user.username}
-          />
-        )}
+    <div>
+      <div style={navBarStyle}>
+        <Link style={padding} to="/">blogs</Link>
+        <Link style={padding} to="/users">users</Link>
+        {user.name} logged in <button onClick={handleLogout}>logout</button>
       </div>
-      </Route>
+      <Switch>
+        <Route path="/users/:id">
+          <Header />
+          <User users={users}/>
+        </Route>
 
-    </Switch>
+        <Route path="/users">
+          <Header />
+          <Users users={users}/>
+        </Route>
+
+        <Route path="/blogs/:id">
+          <Header />
+          <SingleBlog blogs={blogs} handleLike={handleLike}/>
+        </Route>
+
+        <Route path="/">
+        <div>
+          <Header />
+
+          <Togglable buttonLabel='create new blog' ref={ blogFormRef }>
+            <NewBlog createBlog={ createBlog } />
+          </Togglable>
+
+          {blogs.sort(byLikes).map(blog =>
+            <Blog
+              key={blog.id}
+              blog={blog}
+              handleLike={handleLike}
+              handleRemove={handleRemove}
+              own={user.username===blog.user.username}
+            />
+          )}
+        </div>
+        </Route>
+
+      </Switch>
+    </div>
   )
 }
 
