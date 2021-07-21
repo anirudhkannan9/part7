@@ -77,7 +77,7 @@ const App = () => {
   const navBarStyle = { backgroundColor: 'lightGrey' }
 
   return (
-    <div>
+    <div className='container'>
       <div style={navBarStyle}>
         <Link style={padding} to="/">blogs</Link>
         <Link style={padding} to="/users">users</Link>
