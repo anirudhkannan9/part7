@@ -13,9 +13,11 @@ const blogReducer = (state = [], action) => {
                 ...blogToLike,
                 likes: blogToLike.likes + 1
             }
-            console.log('in blogReducer/LIKE_BLOG, likedBlog after calling service and after incrementing vote: ', likedBlog)
-
             return state.slice().map(b => b.id !== id ? b : likedBlog)
+        }
+        case 'ADD_COMMENT': {
+            let commentedBlog = action.data
+            return state.slice().map(b => b.id !== commentedBlog.id ? b : commentedBlog)
         }
         case 'REMOVE_BLOG':
             return state.slice().filter(b => b.id !== action.data.id)
@@ -42,6 +44,13 @@ export const likeBlogActionCreator = blog => {
     return {
         type: 'LIKE_BLOG',
         data: blog
+    }
+}
+
+export const addCommentActionCreator = ( commentedBlog ) => {
+    return {
+        type: 'ADD_COMMENT',
+        data: commentedBlog
     }
 }
 
