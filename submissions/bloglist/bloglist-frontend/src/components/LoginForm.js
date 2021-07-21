@@ -29,12 +29,12 @@ const LoginForm = () => {
 
     return (
         <div>
-            <h2>Login to application (new component)</h2>
+            <h2>Login to application </h2>
             <Notification/>
 
             <form onSubmit={ handleLogin }>
                 <div>
-                    username (new component):
+                    username :
                     <input
                         type='text'
                         value={ username }
@@ -42,14 +42,14 @@ const LoginForm = () => {
                     />
                 </div>
                 <div>
-                    password (new component):
+                    password :
                     <input
                         type='password'
                         value = { password }
                         onChange={ ( { target } ) => setPassword( target.value ) }
                     />
                 </div>
-                <button id='login'>login (new component)</button>
+                <button id='login'>login </button>
             </form>
         </div>
     )
