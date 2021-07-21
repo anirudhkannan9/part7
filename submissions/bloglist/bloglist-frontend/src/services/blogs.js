@@ -24,6 +24,15 @@ const update = (blog) => {
   return request.then(response => response.data)
 }
 
+const addCommentService = (id, comment) => {
+  const commentObject = {
+    'comment': comment
+  }
+  const request = axios.post(`${baseUrl}/${id}/comments`, commentObject, getConfig())
+  console.log(request)
+  return request.then(response => response.data)
+}
+
 const voteForBlogService = blog => {
   const votedBlog = { ...blog, likes: blog.likes + 1 }
   console.log('in voteForBlogService, votedBlog: ', votedBlog)
@@ -46,6 +55,7 @@ export default {
   getAll: getAllBlogsService,
   create,
   update,
+  addCommentService,
   voteForBlogService,
   remove,
 }
