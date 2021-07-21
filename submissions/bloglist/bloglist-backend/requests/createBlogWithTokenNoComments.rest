@@ -1,0 +1,9 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Imthbm5hbmExIiwiaWQiOiI2MGU1MWYwZjRkNTVjNjcwODJiYmI0YWMiLCJpYXQiOjE2MjY4MjYzNTl9.z9JaDLZ9uLjJhmyqBrCUzkzAx0kVIEWya8TrJhxgPpM
+
+{
+    "title": "Seeing if leaving comments array empty causes default behaviour",
+    "url": "comments.com",
+    "author": "commenter"
+}

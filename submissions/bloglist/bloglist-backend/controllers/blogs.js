@@ -36,6 +36,28 @@ router.put('/:id', async (request, response) => {
   response.json(updatedBlog.toJSON())
 })
 
+router.post('/:id/comments', async (request, response) => {
+  const oldBlog = await Blog.findById(request.params.id)
+  console.log('old blog: ', oldBlog)
+  let newComments = null
+  if (oldBlog.comments) {
+    console.log('old comments exist: ', oldBlog.comments)
+    newComments = [...oldBlog.comments, request.body.comment]
+  } else {
+    console.log('old comments do not exist')
+    newComments = [ request.body.comment ]
+  }
+
+  console.log('new comments: ', newComments)
+
+
+  const newBlog = { ...oldBlog._doc, comments: newComments }
+  console.log('new blog: ', newBlog)
+
+  const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, newBlog, { new: true })
+  response.json(updatedBlog.toJSON())
+})
+
 router.post('/', async (request, response) => {
   const blog = new Blog(request.body)
 
@@ -53,6 +75,10 @@ router.post('/', async (request, response) => {
 
   if (!blog.likes) {
     blog.likes = 0
+  }
+
+  if (!blog.comments) {
+    blog.comments = []
   }
 
   blog.user = user
