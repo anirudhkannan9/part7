@@ -15,8 +15,19 @@ import Header from './components/Header'
 import blogService from './services/blogs'
 import userService from './services/users'
 import { createNotif } from './reducers/notifReducer'
-import { createNewBlogActionCreator, likeBlogActionCreator, removeBlogActionCreator, initializeBlogsActionCreator } from './reducers/blogReducer'
+import { createNewBlogActionCreator, likeBlogActionCreator, initializeBlogsActionCreator } from './reducers/blogReducer'
+//import { removeBlogActionCreator } from './reducers/blogReducer'
 import { logOutUserActionCreator } from './reducers/userReducer'
+
+import {
+  Container,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableRow,
+  //Paper
+} from '@material-ui/core'
 
 
 const App = () => {
@@ -25,9 +36,22 @@ const App = () => {
   const user = useSelector( state => state.user )
   const [ users, setUsers ] = useState([])
 
+  const tableElements = [
+    {
+      title: 'first element',
+      id: 1
+    },
+    {
+      title: 'second element',
+      id: 2
+    }
+  ]
+
   useEffect(() => {
     blogService.getAll().then(blogs => {
       dispatch( initializeBlogsActionCreator( blogs ) )
+      console.log(blogs)
+      console.log(tableElements)
     })
     userService.getAllUsersService().then(usersReturned => {
       setUsers(usersReturned)
@@ -55,20 +79,26 @@ const App = () => {
     dispatch( likeBlogActionCreator( blogToLike ) )
   }
 
-  const handleRemove = async (id) => {
-    const blogToRemove = blogs.find(b => b.id === id)
-    const ok = window.confirm(`Remove blog ${blogToRemove.title} by ${blogToRemove.author}`)
-    if (ok) {
-      await blogService.remove(id)
-      dispatch( removeBlogActionCreator( blogToRemove ) )
-    }
-  }
+  // const handleRemove = async (id) => {
+  //   const blogToRemove = blogs.find(b => b.id === id)
+  //   const ok = window.confirm(`Remove blog ${blogToRemove.title} by ${blogToRemove.author}`)
+  //   if (ok) {
+  //     await blogService.remove(id)
+  //     dispatch( removeBlogActionCreator( blogToRemove ) )
+  //   }
+  // }
+
+  // const handleLogin = (username, password) => {
+  //   try
+  // }
 
   const handleLogout = () => dispatch( logOutUserActionCreator() )
 
   if ( !user ) {
     return (
-      <LoginForm />
+      <Container>
+        <LoginForm />
+      </Container>
     )
   }
 
@@ -77,7 +107,7 @@ const App = () => {
   const navBarStyle = { backgroundColor: 'lightGrey' }
 
   return (
-    <div className='container'>
+    <Container >
       <div style={navBarStyle}>
         <Link style={padding} to="/">blogs</Link>
         <Link style={padding} to="/users">users</Link>
@@ -112,15 +142,36 @@ const App = () => {
               key={blog.id}
               blog={blog}
               handleLike={handleLike}
-              handleRemove={handleRemove}
               own={user.username===blog.user.username}
             />
           )}
+
+          <h3>Table goes under here</h3>
+          <TableContainer >
+            <Table>
+              <TableBody>
+                {
+                    tableElements.map(element => (
+                    <TableRow key={element.id}>
+                      <TableCell>
+                        <i>{element.title}</i>
+                      </TableCell>
+                      <TableCell>
+                        { element.id }
+                      </TableCell>
+                    </TableRow>
+                  ))
+                }
+              </TableBody>
+            </Table>
+          </TableContainer>
+
+
         </div>
         </Route>
 
       </Switch>
-    </div>
+    </Container>
   )
 }
 

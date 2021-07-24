@@ -3,7 +3,6 @@ import './Users.css'
 import { Link } from 'react-router-dom'
 
 const Users = ( { users } ) => {
-    console.log(users)
 
     return (
         <div>
@@ -20,12 +19,12 @@ const Users = ( { users } ) => {
                                 <Link to={`/users/${user.id}`}>{user.name}</Link>
                             </td>
                             <td>
-                                {user.blogs.length}
+                                { user.blogs.length }
                             </td>
                         </tr>
                     )}
                 </tbody>
-            </table>
+            </ table>
         </div>
     )
 }

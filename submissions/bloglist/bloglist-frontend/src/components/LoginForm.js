@@ -5,13 +5,12 @@ import { createNotif } from '../reducers/notifReducer'
 import { useDispatch } from 'react-redux'
 import { logInUserActionCreator } from '../reducers/userReducer'
 
-
 const LoginForm = () => {
+    const dispatch = useDispatch()
     const [ username, setUsername ] = useState('')
     const [ password, setPassword ] = useState('')
-    const dispatch = useDispatch()
 
-    const handleLogin = async event => {
+    const onLogin = async (event) => {
         event.preventDefault()
         try {
             const user = await loginService.login({
@@ -32,7 +31,7 @@ const LoginForm = () => {
             <h2>Login to application </h2>
             <Notification/>
 
-            <form onSubmit={ handleLogin }>
+            <form onSubmit={ onLogin }>
                 <div>
                     username :
                     <input
